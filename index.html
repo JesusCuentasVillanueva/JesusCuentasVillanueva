@@ -3,102 +3,389 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jesús Cuentas Villanueva. Portafolio profesional y CV.">
-    <meta name="keywords" content="Jesús Cuentas Villanueva, desarrollador web, [ciudad], [especialidades]">
-    <meta name="author" content="Jesús Cuentas Villanueva">
-    <meta property="og:title" content="Jesús Cuentas Villanueva">
-    <meta property="og:description" content="Portafolio profesional y CV de Jesús Cuentas Villanueva">
-    <meta property="og:image" content="[URL de tu foto profesional]">
-    <meta property="og:url" content="https://jesuscuentasvillanueva.github.io">
-    <meta name="google-site-verification" content="xLWBkpEbD28tKWOHpDQBBV6T1HQ9jIknc0e1S1vFesE" />
-    
-    <title>Jesús Cuentas Villanueva - Desarrollador Web | Portafolio Profesional</title>
+    <meta name="description" content="Jesús Cuentas Villanueva">
+    <title>Jesús Cuentas Villanueva</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
+            --bg-color: #0f172a;
+            --text-primary: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;
+            --section-bg: #1e293b;
+            --card-bg: rgba(30, 41, 59, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-primary);
             line-height: 1.6;
-            margin: 0;
-            padding: 0;
         }
 
         .container {
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 0 2rem;
         }
 
-        header {
-            background: var(--primary-color);
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-
-        .section {
-            margin: 2rem 0;
-        }
-
-        .skills {
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
             display: flex;
-            flex-wrap: wrap;
+            align-items: center;
+            padding: 4rem 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1rem;
+        }
+
+        .hero-text h2 {
+            color: var(--accent);
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            margin-bottom: 2rem;
+        }
+
+        .hero-text p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+
+        .profile-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 10rem;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            filter: grayscale(20%);
+            transition: all 0.3s ease;
+        }
+
+        .profile-image:hover {
+            filter: none;
+            transform: translateY(-5px);
+        }
+
+        /* Secciones */
+        section {
+            padding: 6rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 3rem;
+            display: flex;
+            align-items: center;
             gap: 1rem;
         }
 
-        .skill-tag {
-            background: var(--secondary-color);
-            color: white;
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--accent);
+            opacity: 0.3;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .skill-category h3 {
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            color: var(--text-secondary);
+            margin: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li::before {
+            content: "▹";
+            color: var(--accent);
+        }
+
+        /* Proyectos */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-title {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .project-description {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .project-tech span {
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: rgba(56, 189, 248, 0.1);
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+        }
+
+        /* Experiencia */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline-item {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(56, 189, 248, 0.1);
+        }
+
+        .timeline-date {
+            color: var(--accent);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contacto */
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .social-link {
+            color: var(--text-primary);
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .profile-image {
+                width: 220px;
+                height: 220px;
+                margin: 0 auto;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="hero">
         <div class="container">
-            <h1>Jesús Cuentas Villanueva</h1>
-            <p>Desarrollador Web | Diseñador UX | Lo que seas</p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Jesus Cuentas Villanueva</h1>
+                    <h2>Ingeniería|Inteligencia Artificial|Procesos Industriales</h2>
+                    <p>
+                        Ingeniero industrial, técnico en mecatrónica industrial y estudiante de ciencia de datos e inteligencia artificial.
+                    </p>
+                    <div class="social-links">
+                        <a href="mailto:jesuscuentasv@gmail.com" class="social-link" title="Email">
+                            <i class="far fa-envelope"></i>
+                        </a>
+                        <a href="https://linkedin.com/in/tu-perfil" class="social-link" title="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="https://github.com/JesusCuentasVillanueva" class="social-link" title="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://medium.com/@twiter153" class="social-link" title="Medium">
+                            <i class="fab fa-medium-m"></i>
+                        </a>
+                    </div>
+                </div>
+                <img src="perfil.jpg" alt="Jesús Cuentas Villanueva" class="profile-image">
+            </div>
         </div>
-    </header>
+    </div>
 
-    <main class="container">
-        <section class="section">
-            <h2>Sobre mí</h2>
-            <p>Una breve descripción sobre ti y tus objetivos profesionales.</p>
-        </section>
-
-        <section class="section">
-            <h2>Experiencia</h2>
-            <div class="experience-item">
-                <h3>Nombre de la Empresa</h3>
-                <p>Cargo | Fecha inicio - Fecha fin</p>
-                <ul>
-                    <li>Logro importante 1</li>
-                    <li>Logro importante 2</li>
-                </ul>
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Habilidades</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Análisis de Datos</h3>
+                    <ul class="skill-list">
+                        <li>Python</li>
+                        <li>SQL</li>
+                        <li>Excel Intermedio</li>
+                        <li>Power BI</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Ingeniería</h3>
+                    <ul class="skill-list">
+                        <li>Autodesk Inventor</li>
+                        <li>Internet of Things</li>
+                        <li>Mejora continua</li>
+                        <li>Optimización de Procesos</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>Idiomas</h3>
+                    <ul class="skill-list">
+                        <li>Español (Nativo)</li>
+                        <li>Inglés (Intermedio)</li>
+                        <li>Francés (Básico)</li>
+                    </ul>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Habilidades</h2>
-            <div class="skills">
-                <span class="skill-tag">HTML</span>
-                <span class="skill-tag">CSS</span>
-                <span class="skill-tag">JavaScript</span>
-                <!-- Añade más habilidades -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">Proyectos Destacados</h2>
+            <div class="projects-grid">
+                <article class="project-card">
+                    <img src="proyecto1.png" alt="SomIA HSE" class="project-image">
+                    <div class="project-content">
+                        <h3 class="project-title">SomIA HSE</h3>
+                        <p class="project-description">
+                            Startup finalista de <strong>UTP StartUps</strong>. Proyecto desarrollado principalmente en Python y usando distintas API's para prevenir accidentes laborales en entornos industriales.
+                        </p>
+                        <div class="project-tech">
+                            <span>Python</span>
+                            <span>OpenAI</span>
+                            <span>PyQt5</span>
+                            <span>OpenCV</span>
+                        </div>
+                    </div>
+                </article>
+                <!-- Agregar más proyectos aquí -->
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section class="section">
-            <h2>Contacto</h2>
-            <p>Email: tu@email.com</p>
-            <p>LinkedIn: <a href="https://linkedin.com/in/tuuser">tuuser</a></p>
-            <p>GitHub: <a href="https://github.com/tuuser">tuuser</a></p>
-        </section>
-    </main>
+    <section id="experience">
+        <div class="container">
+            <h2 class="section-title">Experiencia</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Diciembre 2023 - Junio 2024</div>
+                    <h3>SC Construcción e Ingeniería S.A.C</h3>
+                    <p>Asistente HSE</p>
+                    <ul class="skill-list">
+                        <li>Supervisión de trabajos de alto riesgo y actos subestándar</li>
+                        <li>Realización de Simulacros programados, informes PowerBI</li>
+                        <li>Inspección en campo de condiciones Subestándar</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="education">
+        <div class="container">
+            <h2 class="section-title">Formación</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2024 - 2026</div>
+                    <h3>Técnico en Ciencia de Datos e Inteligencia Artificial</h3>
+                    <p>Instituto Continental</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <h3>Ingeniería Industrial</h3>
+                    <p>Universidad Tecnológica del Perú</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2016 - 2018</div>
+                    <h3>Técnico en Mecatrónica Industrial</h3>
+                    <p>SENATI</p>
+                </div>
+            </div>
+        </div>
+    </section>
 </body>
 </html> 
